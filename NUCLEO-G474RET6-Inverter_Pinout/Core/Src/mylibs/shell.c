@@ -1,9 +1,13 @@
-/*
- * shell.c
- *
- *  Created on: Oct 1, 2023
- *      Author: nicolas
+/**
+ *@file shell.c
+ *@brief Shell permettant de controller le moteur
+ *@date Oct 1, 2023
+ *@author Nicolas
+ *@author Tom
+ *@author Baptiste
+ *@author Antoine
  */
+
 #include "usart.h"
 #include "mylibs/shell.h"
 #include <stdio.h>

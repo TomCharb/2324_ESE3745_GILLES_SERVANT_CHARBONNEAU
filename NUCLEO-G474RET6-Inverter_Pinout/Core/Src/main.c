@@ -105,6 +105,7 @@ int main(void)
 	__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,512);
 	__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,1024-512);
 	 */
+
 	pwm_start();
 	set_pwm_alpha(70);
 	Shell_Init();

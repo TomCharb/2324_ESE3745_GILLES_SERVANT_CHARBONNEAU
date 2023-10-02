@@ -1,8 +1,8 @@
-/*
- * shell.h
- *
- *  Created on: Oct 1, 2023
- *      Author: nicolas
+/**
+ *@file shell.h
+ *@brief Shell permettant de controller le moteur
+ *@date Oct 1, 2023
+ *@author Nicolas
  */
 
 #ifndef INC_MYLIBS_SHELL_H_

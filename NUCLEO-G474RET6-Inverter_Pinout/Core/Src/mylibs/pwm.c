@@ -1,12 +1,19 @@
-/*
- * pwm.c
- *
- *  Created on: Oct 2, 2023
- *      Author: Tomtogaz
- */
+/**
+ *@file pwm.c
+ *@brief Ce fichier contient les fonctionnement nécéssaires à la génération des signaux PWM pour controler le moteur.
+ *@date Oct 2, 2023
+ *@author Tom
+ *@author Baptiste
+ *@author Antoine
+*/
 
 #include "mylibs/pwm.h"
 #include "tim.h"
+
+/**
+ * @def alpha_MAX
+ * Résolution maximal du rapport cyclique
+ */
 #define alpha_MAX 1024
 
 void pwm_start(void){
