@@ -15,10 +15,7 @@
  * @brief initialise les commandes PWM pour 2 canaux et leur complémentaires
  */
 void pwm_start(void);
-/**
- * @brief permet de choisir le rapport cyclique de notre PWM
- * @param alpha Valeur de rapport cyclique comprise entre 0 et 100
- */
+
 void set_pwm_alpha(int alpha);
 
 

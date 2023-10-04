@@ -34,6 +34,11 @@ int		 	argc = 0;
 char*		token;
 int 		newCmdReady = 0;
 
+/**
+ * @brief Fonction d'initialisation du Shell
+ * @note Affiche un message d'accueil lors du lançement du programme
+ */
+
 void Shell_Init(void){
 	memset(argv, NULL, MAX_ARGS*sizeof(char*));
 	memset(cmdBuffer, NULL, CMD_BUFFER_SIZE*sizeof(char));
@@ -45,10 +50,13 @@ void Shell_Init(void){
 	HAL_UART_Transmit(&huart2, prompt, strlen((char *)prompt), HAL_MAX_DELAY);
 }
 
+/**
+ * @brief Cette fonction tourne en boucle afin de recevoir et d'exécuter les commandes du Shell
+ */
 void Shell_Loop(void){
-	if(uartRxReceived){
+	if(uartRxReceived){ //Condition verifiée lors de la réception d'un nouveau caractère UART
 		switch(uartRxBuffer[0]){
-		case ASCII_CR: // Nouvelle ligne, instruction à traiter
+		case ASCII_CR: //Nouvelle ligne, instruction à traiter
 			HAL_UART_Transmit(&huart2, newline, sizeof(newline), HAL_MAX_DELAY);
 			cmdBuffer[idx_cmd] = '\0';
 			argc = 0;
@@ -60,34 +68,38 @@ void Shell_Loop(void){
 			idx_cmd = 0;
 			newCmdReady = 1;
 			break;
-		case ASCII_BACK: // Suppression du dernier caractère
+		case ASCII_BACK: //Suppression du dernier caractère
 			cmdBuffer[idx_cmd--] = '\0';
 			HAL_UART_Transmit(&huart2, backspace, sizeof(backspace), HAL_MAX_DELAY);
 			break;
 
-		default: // Nouveau caractère
+		default: //Nouveau caractère
 			cmdBuffer[idx_cmd++] = uartRxBuffer[0];
 			HAL_UART_Transmit(&huart2, uartRxBuffer, UART_RX_BUFFER_SIZE, HAL_MAX_DELAY);
 		}
 		uartRxReceived = 0;
 	}
 
-	if(newCmdReady){
+	if(newCmdReady){ //Condition vérifiant la validitée d'une commande
 		if(strcmp(argv[0],"WhereisBrian?")==0){
 			HAL_UART_Transmit(&huart2, brian, sizeof(brian), HAL_MAX_DELAY);
 		}
-		else if(strcmp(argv[0],"help")==0){
+		else if(strcmp(argv[0],"help")==0){//Fonction help renvoyant la notice des fonctions spécifiées
 			int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Print all available functions here\r\n");
 			HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
+			if(strcmp(argv[1],"speed")==0){
+				int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Prend en argument un rapport cyclique entre 0 et 100\r\n");
+				HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
+			}
 		}
-		else if(strcmp(argv[0],"speed")==0){
-			if(atoi(argv[1])>=0){
+		else if(strcmp(argv[0],"speed")==0){//Fonction permettant de choisir le sens de rotation et la vitesse du moteur
+			if(atoi(argv[1])>=0){//La valeur de vitesse reçue étant une chaine de caractères ASCII, atoi permet de la convertir en entier
 				if(atoi(argv[1])<=100){
-					set_pwm_alpha(atoi(argv[1]));
+					set_pwm_alpha(atoi(argv[1]));//Appelle à la fonction permettant de changer le rapport cyclique
 					int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Nouveau alpha = %d\r\n",atoi(argv[1]));
 					HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
 				}
-				else{
+				else{//Sécuritée permettant de ne pas avoir un rapport cyclique supérieur à 100
 					set_pwm_alpha(100);
 					int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Nouveau alpha = 100\r\n");
 					HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
@@ -106,6 +118,9 @@ void Shell_Loop(void){
 	}
 }
 
+/**
+ * @brief Fonction Callback appelée lors de la réception d'un nouveau caractère
+ */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef * huart){
 	uartRxReceived = 1;
 	HAL_UART_Receive_IT(&huart2, uartRxBuffer, UART_RX_BUFFER_SIZE);

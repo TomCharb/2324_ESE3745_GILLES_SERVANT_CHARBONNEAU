@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['3_0',['TIM Group Channel 5 and Channel 1, 2 or 3',['../group___t_i_m___group___channel5.html',1,'']]],
-  ['3_20bits_20for_20subpriority_1',['|                                   |                             | 3 bits for subpriority',['../stm32g4xx__hal__cortex_8c.html#autotoc_md18',1,'']]]
+  ['main_0',['main',['../main_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main.c']]],
+  ['main_2ec_1',['main.c',['../main_8c.html',1,'']]],
+  ['main_2eh_2',['main.h',['../main_8h.html',1,'']]]
 ];

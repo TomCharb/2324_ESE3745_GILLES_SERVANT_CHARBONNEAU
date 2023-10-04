@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['busfault_5fhandler_0',['busfault_handler',['../stm32g4xx__it_8h.html#a850cefb17a977292ae5eb4cafa9976c3',1,'BusFault_Handler(void):&#160;stm32g4xx_it.c'],['../stm32g4xx__it_8c.html#a850cefb17a977292ae5eb4cafa9976c3',1,'BusFault_Handler(void):&#160;stm32g4xx_it.c']]]
+  ['hal_5ftim_5fperiodelapsedcallback_0',['HAL_TIM_PeriodElapsedCallback',['../main_8c.html#a8a3b0ad512a6e6c6157440b68d395eac',1,'main.c']]],
+  ['hal_5fuart_5frxcpltcallback_1',['HAL_UART_RxCpltCallback',['../shell_8c.html#ae494a9643f29b87d6d81e5264e60e57b',1,'shell.c']]]
 ];
