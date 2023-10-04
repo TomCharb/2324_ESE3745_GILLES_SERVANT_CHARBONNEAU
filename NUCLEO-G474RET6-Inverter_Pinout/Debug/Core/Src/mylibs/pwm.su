@@ -1,2 +1,2 @@
-../Core/Src/mylibs/pwm.c:19:6:pwm_start	8	static
-../Core/Src/mylibs/pwm.c:27:6:set_pwm_alpha	24	static
+../Core/Src/mylibs/pwm.c:27:6:pwm_start	8	static
+../Core/Src/mylibs/pwm.c:46:6:set_pwm_alpha	24	static

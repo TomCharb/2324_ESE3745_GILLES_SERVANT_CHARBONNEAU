@@ -3264,11 +3264,11 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
  800157c:	48000800 	.word	0x48000800
 
 08001580 <pwm_start>:
- * @def alpha_MAX
- * Résolution maximal du rapport cyclique
+ * Cette fonction démarre le PWM sur les canaux 1 et 2 du Timer 1.
+ * Elle active la sortie PWM et la sortie complémentaire PWM (PWMN) sur ces canaux.
+ *
+ * @note Cette fonction doit être appelée après avoir configuré les paramètres PWM appropriés.
  */
-#define alpha_MAX 1024
-
 void pwm_start(void){
  8001580:	b580      	push	{r7, lr}
  8001582:	af00      	add	r7, sp, #0
@@ -3295,7 +3295,11 @@ void pwm_start(void){
  80015a8:	2000026c 	.word	0x2000026c
 
 080015ac <set_pwm_alpha>:
-
+ *
+ * @param alpha La valeur du paramètre alpha en pourcentage (entre 0 et 100).
+ *
+ * @note Assurez-vous que le Timer 1 est configuré correctement pour le fonctionnement PWM avant d'appeler cette fonction.
+ */
 void set_pwm_alpha(int alpha){
  80015ac:	b480      	push	{r7}
  80015ae:	b085      	sub	sp, #20
@@ -3340,9 +3344,9 @@ void set_pwm_alpha(int alpha){
  80015fc:	2000026c 	.word	0x2000026c
 
 08001600 <Shell_Init>:
- * @note Affiche : *-----------------------------*
- *		           | Welcome on Nucleo-STM32G474 |
- *		           *-----------------------------*
+/**
+ * @brief Fonction d'initialisation du Shell
+ * @note Affiche un message d'accueil lors du lançement du programme
  */
 
 void Shell_Init(void){
@@ -3412,7 +3416,7 @@ void Shell_Loop(void){
  8001680:	b580      	push	{r7, lr}
  8001682:	b086      	sub	sp, #24
  8001684:	af00      	add	r7, sp, #0
-	if(uartRxReceived){ //!< Condition verifiée lors de la réception d'un nouveau caractère UART
+	if(uartRxReceived){ //Condition verifiée lors de la réception d'un nouveau caractère UART
  8001686:	4b8c      	ldr	r3, [pc, #560]	; (80018b8 <Shell_Loop+0x238>)
  8001688:	781b      	ldrb	r3, [r3, #0]
  800168a:	2b00      	cmp	r3, #0
@@ -3424,7 +3428,7 @@ void Shell_Loop(void){
  8001694:	d034      	beq.n	8001700 <Shell_Loop+0x80>
  8001696:	2b0d      	cmp	r3, #13
  8001698:	d142      	bne.n	8001720 <Shell_Loop+0xa0>
-		case ASCII_CR: //!< Nouvelle ligne, instruction à traiter
+		case ASCII_CR: //Nouvelle ligne, instruction à traiter
 			HAL_UART_Transmit(&huart2, newline, sizeof(newline), HAL_MAX_DELAY);
  800169a:	f04f 33ff 	mov.w	r3, #4294967295
  800169e:	2203      	movs	r2, #3
@@ -3483,7 +3487,7 @@ void Shell_Loop(void){
  80016fc:	601a      	str	r2, [r3, #0]
 			break;
  80016fe:	e01f      	b.n	8001740 <Shell_Loop+0xc0>
-		case ASCII_BACK: //!<Suppression du dernier caractère
+		case ASCII_BACK: //Suppression du dernier caractère
 			cmdBuffer[idx_cmd--] = '\0';
  8001700:	4b71      	ldr	r3, [pc, #452]	; (80018c8 <Shell_Loop+0x248>)
  8001702:	681b      	ldr	r3, [r3, #0]
@@ -3502,7 +3506,7 @@ void Shell_Loop(void){
 			break;
  800171e:	e00f      	b.n	8001740 <Shell_Loop+0xc0>
 
-		default: //!<Nouveau caractère
+		default: //Nouveau caractère
 			cmdBuffer[idx_cmd++] = uartRxBuffer[0];
  8001720:	4b69      	ldr	r3, [pc, #420]	; (80018c8 <Shell_Loop+0x248>)
  8001722:	681b      	ldr	r3, [r3, #0]
@@ -3526,7 +3530,7 @@ void Shell_Loop(void){
  8001744:	701a      	strb	r2, [r3, #0]
 	}
 
-	if(newCmdReady){ //!<Condition vérifiant la validitée d'une commande
+	if(newCmdReady){ //Condition vérifiant la validitée d'une commande
  8001746:	4b66      	ldr	r3, [pc, #408]	; (80018e0 <Shell_Loop+0x260>)
  8001748:	681b      	ldr	r3, [r3, #0]
  800174a:	2b00      	cmp	r3, #0
@@ -3548,7 +3552,7 @@ void Shell_Loop(void){
  800176c:	f004 fb0c 	bl	8005d88 <HAL_UART_Transmit>
  8001770:	e093      	b.n	800189a <Shell_Loop+0x21a>
 		}
-		else if(strcmp(argv[0],"help")==0){//!<Fonction help renvoyant la notice des fonctions spécifiées
+		else if(strcmp(argv[0],"help")==0){//Fonction help renvoyant la notice des fonctions spécifiées
  8001772:	4b5a      	ldr	r3, [pc, #360]	; (80018dc <Shell_Loop+0x25c>)
  8001774:	681b      	ldr	r3, [r3, #0]
  8001776:	495e      	ldr	r1, [pc, #376]	; (80018f0 <Shell_Loop+0x270>)
@@ -3595,7 +3599,7 @@ void Shell_Loop(void){
  80017ce:	e064      	b.n	800189a <Shell_Loop+0x21a>
 			}
 		}
-		else if(strcmp(argv[0],"speed")==0){//!<Fonction permettant de choisir le sens de rotation et la vitesse du moteur
+		else if(strcmp(argv[0],"speed")==0){//Fonction permettant de choisir le sens de rotation et la vitesse du moteur
  80017d0:	4b42      	ldr	r3, [pc, #264]	; (80018dc <Shell_Loop+0x25c>)
  80017d2:	681b      	ldr	r3, [r3, #0]
  80017d4:	4949      	ldr	r1, [pc, #292]	; (80018fc <Shell_Loop+0x27c>)
@@ -3604,7 +3608,7 @@ void Shell_Loop(void){
  80017dc:	4603      	mov	r3, r0
  80017de:	2b00      	cmp	r3, #0
  80017e0:	d154      	bne.n	800188c <Shell_Loop+0x20c>
-			if(atoi(argv[1])>=0){//!<La valeur de vitesse reçue étant une chaine de caractères ASCII, atoi permet de la convertir en entier
+			if(atoi(argv[1])>=0){//La valeur de vitesse reçue étant une chaine de caractères ASCII, atoi permet de la convertir en entier
  80017e2:	4b3e      	ldr	r3, [pc, #248]	; (80018dc <Shell_Loop+0x25c>)
  80017e4:	685b      	ldr	r3, [r3, #4]
  80017e6:	4618      	mov	r0, r3
@@ -3620,7 +3624,7 @@ void Shell_Loop(void){
  80017fc:	4603      	mov	r3, r0
  80017fe:	2b64      	cmp	r3, #100	; 0x64
  8001800:	dc1d      	bgt.n	800183e <Shell_Loop+0x1be>
-					set_pwm_alpha(atoi(argv[1]));//!<Appelle à la fonction permettant de changer le rapport cyclique
+					set_pwm_alpha(atoi(argv[1]));//Appelle à la fonction permettant de changer le rapport cyclique
  8001802:	4b36      	ldr	r3, [pc, #216]	; (80018dc <Shell_Loop+0x25c>)
  8001804:	685b      	ldr	r3, [r3, #4]
  8001806:	4618      	mov	r0, r3
@@ -3648,7 +3652,7 @@ void Shell_Loop(void){
  8001838:	f004 faa6 	bl	8005d88 <HAL_UART_Transmit>
  800183c:	e02d      	b.n	800189a <Shell_Loop+0x21a>
 				}
-				else{//!<Sécuritée permettant de ne pas avoir un rapport cyclique supérieur à 100
+				else{//Sécuritée permettant de ne pas avoir un rapport cyclique supérieur à 100
 					set_pwm_alpha(100);
  800183e:	2064      	movs	r0, #100	; 0x64
  8001840:	f7ff feb4 	bl	80015ac <set_pwm_alpha>
@@ -3742,6 +3746,9 @@ void Shell_Loop(void){
 
 08001918 <HAL_UART_RxCpltCallback>:
 
+/**
+ * @brief Fonction Callback appelée lors de la réception d'un nouveau caractère
+ */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef * huart){
  8001918:	b580      	push	{r7, lr}
  800191a:	b082      	sub	sp, #8
