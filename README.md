@@ -13,4 +13,5 @@ Ajouter le calcul pour les dead times
 Ajouter le calcul pour ARR et PSC
 
 Faire la mise en page et comprendre pourquoi le doxygen veut pas tout commit
-YO LA MIFhrftglmh;,fygtpk,ngggggggggggghnn,gh,nghh,nngjfth
+
+calcul conversion capteur courant : résolution 50mV/A , origin 1.65V 
