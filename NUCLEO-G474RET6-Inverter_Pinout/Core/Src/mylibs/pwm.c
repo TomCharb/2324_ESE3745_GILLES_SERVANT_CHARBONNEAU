@@ -5,16 +5,17 @@
  *@author Tom
  *@author Baptiste
  *@author Antoine
-*/
+ */
 
 #include "mylibs/pwm.h"
 #include "tim.h"
+
+int aTemp;
 
 /**
  * @def alpha_MAX
  * Résolution maximal du rapport cyclique
  */
-#define alpha_MAX 1024
 
 /**
  * @brief Démarre le PWM.
@@ -30,6 +31,26 @@ void pwm_start(void){
 
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
 	HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
+
+	aTemp=50;
+
+}
+
+/**
+ * @brief Démarre le PWM.
+ *
+ * Cette fonction arrete le PWM sur les canaux 1 et 2 du Timer 1.
+ * Elle désactive la sortie PWM et la sortie complémentaire PWM (PWMN) sur ces canaux.
+ *
+ */
+
+void pwm_stop(void){
+	set_pwm_alpha(50);
+	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
+	HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_1);
+
+	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
+	HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_2);
 }
 
 /**
@@ -44,8 +65,33 @@ void pwm_start(void){
  * @note Assurez-vous que le Timer 1 est configuré correctement pour le fonctionnement PWM avant d'appeler cette fonction.
  */
 void set_pwm_alpha(int alpha){
-	int a1=alpha_MAX*alpha/100;
-	int a2=alpha_MAX*(100-alpha)/100;
-	__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,a1);
-	__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,a2);
+	int a1;
+	int a2;
+	int aTransi=aTemp;
+
+	if (alpha > aTransi){
+		while(aTransi != alpha){
+
+			aTransi++;
+			a1=alpha_MAX*aTransi/PWM_MAX;
+			a2=alpha_MAX*(PWM_MAX-aTransi)/PWM_MAX;
+			__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,a1);
+			__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,a2);
+			HAL_Delay(50);
+		}
+	}
+
+	if (alpha < aTransi){
+		while(aTransi != alpha){
+
+			aTransi--;
+			a1=alpha_MAX*aTransi/PWM_MAX;
+			a2=alpha_MAX*(PWM_MAX-aTransi)/PWM_MAX;
+			__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,a1);
+			__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,a2);
+			HAL_Delay(50);
+		}
+	}
+	aTemp = alpha;
+
 }
