@@ -15,3 +15,4 @@ Ajouter le calcul pour ARR et PSC
 Faire la mise en page et comprendre pourquoi le doxygen veut pas tout commit
 
 calcul conversion capteur courant : résolution 50mV/A , origin 1.65V 
+zoubi
