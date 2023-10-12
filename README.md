@@ -1,4 +1,4 @@
-# 2324_ESE3745_GILLES_SERVANT_CHARBONNEAU
+# 2324_ESE3745_GILLES_SERVAN_CHARBONNEAU
 
 on utilise la fonction atoi pour convertir la chaine de caractère en int
 
