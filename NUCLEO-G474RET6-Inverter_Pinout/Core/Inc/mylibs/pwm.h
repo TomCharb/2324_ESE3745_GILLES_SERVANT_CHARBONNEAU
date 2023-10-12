@@ -1,6 +1,6 @@
 /**
  *@file pwm.h
- *@brief Ce fichier contient les fonctionnement nécéssaires à la génération des signaux PWM pour controler le moteur.
+ *@brief Ce fichier contient les fonctions nécéssaires à la génération des signaux PWM pour controler le moteur.
  *@date Oct 2, 2023
  *@author Tom
  *@author Baptiste

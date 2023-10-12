@@ -1,8 +1,10 @@
 /*
  * codeur.h
- *
- *  Created on: Oct 9, 2023
- *      Author: Tomtogaz
+ *@brief Ce fichier contient les fonctions nécéssaires à la gestion des codeurs.
+ *@date Oct 9, 2023
+ *@author Tom
+ *@author Baptiste
+ *@author Antoine
  */
 
 #ifndef INC_MYLIBS_CODEUR_H_

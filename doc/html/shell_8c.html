@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>2324_ESE3745_GILLES_SERVAN_CHARBONNEAU: NUCLEO-G474RET6-Inverter_Pinout/Core/Src/mylibs/shell.c File Reference</title>
+<title>2324_ESE3745_GILLES_SERVAN_CHARBONNEAU: C:/Users/tomch/Documents/ENSEA/2023-2024/TP_ESE_moteur/2324_ESE3745_GILLES_SERVAN_CHARBONNEAU/NUCLEO-G474RET6-Inverter_Pinout/Core/Src/mylibs/shell.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,6 +84,7 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;usart.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="shell_8h_source.html">mylibs/shell.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="pwm_8h_source.html">mylibs/pwm.h</a>&quot;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 </div><table class="memberdecls">
@@ -147,6 +148,9 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>token</b></td></tr>
 <tr class="memitem:a83a0d9b47b936e62d1d68aea902883ac" id="r_a83a0d9b47b936e62d1d68aea902883ac"><td class="memItemLeft" align="right" valign="top"><a id="a83a0d9b47b936e62d1d68aea902883ac" name="a83a0d9b47b936e62d1d68aea902883ac"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>newCmdReady</b> = 0</td></tr>
 <tr class="separator:a83a0d9b47b936e62d1d68aea902883ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa139c7b6be46842b25e90bc93f3fa20b" id="r_aa139c7b6be46842b25e90bc93f3fa20b"><td class="memItemLeft" align="right" valign="top"><a id="aa139c7b6be46842b25e90bc93f3fa20b" name="aa139c7b6be46842b25e90bc93f3fa20b"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>motorStart</b> =0</td></tr>
+<tr class="separator:aa139c7b6be46842b25e90bc93f3fa20b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Shell permettant de controller le moteur. </p>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>2324_ESE3745_GILLES_SERVAN_CHARBONNEAU: NUCLEO-G474RET6-Inverter_Pinout/Core/Src/main.c File Reference</title>
+<title>2324_ESE3745_GILLES_SERVAN_CHARBONNEAU: C:/Users/tomch/Documents/ENSEA/2023-2024/TP_ESE_moteur/2324_ESE3745_GILLES_SERVAN_CHARBONNEAU/NUCLEO-G474RET6-Inverter_Pinout/Core/Src/main.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,7 +74,9 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">main.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -83,17 +85,29 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
 <code>#include &quot;adc.h&quot;</code><br />
+<code>#include &quot;dma.h&quot;</code><br />
 <code>#include &quot;tim.h&quot;</code><br />
 <code>#include &quot;usart.h&quot;</code><br />
 <code>#include &quot;gpio.h&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="shell_8h_source.html">mylibs/shell.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="pwm_8h_source.html">mylibs/pwm.h</a>&quot;</code><br />
+<code>#include &quot;mylibs/codeur.h&quot;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a84ad8abb26bff116df93ff56794334b9" id="r_a84ad8abb26bff116df93ff56794334b9"><td class="memItemLeft" align="right" valign="top"><a id="a84ad8abb26bff116df93ff56794334b9" name="a84ad8abb26bff116df93ff56794334b9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ADC_BUF_SIZE</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a84ad8abb26bff116df93ff56794334b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a70af21c671abfcc773614a9a4f63d920" id="r_a70af21c671abfcc773614a9a4f63d920"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a70af21c671abfcc773614a9a4f63d920">SystemClock_Config</a> (void)</td></tr>
 <tr class="memdesc:a70af21c671abfcc773614a9a4f63d920"><td class="mdescLeft">&#160;</td><td class="mdescRight">System Clock Configuration.  <br /></td></tr>
 <tr class="separator:a70af21c671abfcc773614a9a4f63d920"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af20a88180db1113be1e89266917d148b" id="r_af20a88180db1113be1e89266917d148b"><td class="memItemLeft" align="right" valign="top"><a id="af20a88180db1113be1e89266917d148b" name="af20a88180db1113be1e89266917d148b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>HAL_ADC_ConvCpltCallback</b> (ADC_HandleTypeDef *hadc)</td></tr>
+<tr class="separator:af20a88180db1113be1e89266917d148b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe" id="r_a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
 <tr class="memdesc:a840291bc02cba5474a4cb46a9b9566fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">The application entry point.  <br /></td></tr>
 <tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -103,6 +117,21 @@ Functions</h2></td></tr>
 <tr class="memitem:a1730ffe1e560465665eb47d9264826f9" id="r_a1730ffe1e560465665eb47d9264826f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a1730ffe1e560465665eb47d9264826f9">Error_Handler</a> (void)</td></tr>
 <tr class="memdesc:a1730ffe1e560465665eb47d9264826f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is executed in case of error occurrence.  <br /></td></tr>
 <tr class="separator:a1730ffe1e560465665eb47d9264826f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a2fe544a60ec3af52ab764fbac133f921" id="r_a2fe544a60ec3af52ab764fbac133f921"><td class="memItemLeft" align="right" valign="top"><a id="a2fe544a60ec3af52ab764fbac133f921" name="a2fe544a60ec3af52ab764fbac133f921"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>buffer</b> [ADC_BUF_SIZE]</td></tr>
+<tr class="separator:a2fe544a60ec3af52ab764fbac133f921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff31312fb16705aa73c53b945a1a6b30" id="r_aff31312fb16705aa73c53b945a1a6b30"><td class="memItemLeft" align="right" valign="top"><a id="aff31312fb16705aa73c53b945a1a6b30" name="aff31312fb16705aa73c53b945a1a6b30"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>flag</b> =0</td></tr>
+<tr class="separator:aff31312fb16705aa73c53b945a1a6b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ca6f0f6d02519e2e2dd97b668210ead" id="r_a7ca6f0f6d02519e2e2dd97b668210ead"><td class="memItemLeft" align="right" valign="top"><a id="a7ca6f0f6d02519e2e2dd97b668210ead" name="a7ca6f0f6d02519e2e2dd97b668210ead"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>adc_vall</b></td></tr>
+<tr class="separator:a7ca6f0f6d02519e2e2dd97b668210ead"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f98e2db2fa0d8f0cfd87b887576207f" id="r_a3f98e2db2fa0d8f0cfd87b887576207f"><td class="memItemLeft" align="right" valign="top"><a id="a3f98e2db2fa0d8f0cfd87b887576207f" name="a3f98e2db2fa0d8f0cfd87b887576207f"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>uartTxBuffer</b> [UART_TX_BUFFER_SIZE]</td></tr>
+<tr class="separator:a3f98e2db2fa0d8f0cfd87b887576207f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>: Main program body </p>

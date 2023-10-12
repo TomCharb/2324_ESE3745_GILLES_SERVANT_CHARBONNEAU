@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>2324_ESE3745_GILLES_SERVAN_CHARBONNEAU: NUCLEO-G474RET6-Inverter_Pinout/Core/Inc/mylibs/pwm.h File Reference</title>
+<title>2324_ESE3745_GILLES_SERVAN_CHARBONNEAU: C:/Users/tomch/Documents/ENSEA/2023-2024/TP_ESE_moteur/2324_ESE3745_GILLES_SERVAN_CHARBONNEAU/NUCLEO-G474RET6-Inverter_Pinout/Core/Inc/mylibs/pwm.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,34 +74,62 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">pwm.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Ce fichier contient les fonctionnement nécéssaires à la génération des signaux PWM pour controler le moteur.  
+<p>Ce fichier contient les fonctions nécéssaires à la génération des signaux PWM pour controler le moteur.  
 <a href="#details">More...</a></p>
 
 <p><a href="pwm_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a4757213337112f22dc28ea33dec9f248" id="r_a4757213337112f22dc28ea33dec9f248"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pwm_8h.html#a4757213337112f22dc28ea33dec9f248">alpha_MAX</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="separator:a4757213337112f22dc28ea33dec9f248"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a391fa1e490bd712720989b58fa0d9904" id="r_a391fa1e490bd712720989b58fa0d9904"><td class="memItemLeft" align="right" valign="top"><a id="a391fa1e490bd712720989b58fa0d9904" name="a391fa1e490bd712720989b58fa0d9904"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PWM_MAX</b>&#160;&#160;&#160;100</td></tr>
+<tr class="separator:a391fa1e490bd712720989b58fa0d9904"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ad405ef7080a8cea5c9ac23ba25da1fbb" id="r_ad405ef7080a8cea5c9ac23ba25da1fbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pwm_8h.html#ad405ef7080a8cea5c9ac23ba25da1fbb">pwm_start</a> (void)</td></tr>
 <tr class="memdesc:ad405ef7080a8cea5c9ac23ba25da1fbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise les commandes PWM pour 2 canaux et leur complémentaires  <br /></td></tr>
 <tr class="separator:ad405ef7080a8cea5c9ac23ba25da1fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec8f4f09d7d0222e947bea4b37fc33c2" id="r_aec8f4f09d7d0222e947bea4b37fc33c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pwm_8h.html#aec8f4f09d7d0222e947bea4b37fc33c2">pwm_stop</a> (void)</td></tr>
+<tr class="memdesc:aec8f4f09d7d0222e947bea4b37fc33c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Démarre le PWM.  <br /></td></tr>
+<tr class="separator:aec8f4f09d7d0222e947bea4b37fc33c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae73ceaa047cc6769289b37f661dae3a1" id="r_ae73ceaa047cc6769289b37f661dae3a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pwm_8h.html#ae73ceaa047cc6769289b37f661dae3a1">set_pwm_alpha</a> (int alpha)</td></tr>
 <tr class="memdesc:ae73ceaa047cc6769289b37f661dae3a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure le rapport cyclique des signaux PWM sur les canaux 1 et 2 du Timer 1 en fonction du rapport cyclique alpha.  <br /></td></tr>
 <tr class="separator:ae73ceaa047cc6769289b37f661dae3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Ce fichier contient les fonctionnement nécéssaires à la génération des signaux PWM pour controler le moteur. </p>
+<div class="textblock"><p>Ce fichier contient les fonctions nécéssaires à la génération des signaux PWM pour controler le moteur. </p>
 <dl class="section date"><dt>Date</dt><dd>Oct 2, 2023 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Tom </dd>
 <dd>
 Baptiste </dd>
 <dd>
 Antoine </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a4757213337112f22dc28ea33dec9f248" name="a4757213337112f22dc28ea33dec9f248"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4757213337112f22dc28ea33dec9f248">&#9670;&#160;</a></span>alpha_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define alpha_MAX&#160;&#160;&#160;1024</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Résolution maximal du rapport cyclique </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="ad405ef7080a8cea5c9ac23ba25da1fbb" name="ad405ef7080a8cea5c9ac23ba25da1fbb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad405ef7080a8cea5c9ac23ba25da1fbb">&#9670;&#160;</a></span>pwm_start()</h2>
 
@@ -122,6 +150,27 @@ Antoine </dd></dl>
 <p>initialise les commandes PWM pour 2 canaux et leur complémentaires</p>
 <p>Cette fonction démarre le PWM sur les canaux 1 et 2 du Timer 1. Elle active la sortie PWM et la sortie complémentaire PWM (PWMN) sur ces canaux.</p>
 <dl class="section note"><dt>Note</dt><dd>Cette fonction doit être appelée après avoir configuré les paramètres PWM appropriés. </dd></dl>
+
+</div>
+</div>
+<a id="aec8f4f09d7d0222e947bea4b37fc33c2" name="aec8f4f09d7d0222e947bea4b37fc33c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec8f4f09d7d0222e947bea4b37fc33c2">&#9670;&#160;</a></span>pwm_stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pwm_stop </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Démarre le PWM. </p>
+<p>Cette fonction arrete le PWM sur les canaux 1 et 2 du Timer 1. Elle désactive la sortie PWM et la sortie complémentaire PWM (PWMN) sur ces canaux. </p>
 
 </div>
 </div>

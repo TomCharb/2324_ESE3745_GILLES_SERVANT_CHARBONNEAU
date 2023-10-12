@@ -26,6 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdio.h>
 #include "mylibs/shell.h"
 #include "mylibs/pwm.h"
 #include "mylibs/codeur.h"

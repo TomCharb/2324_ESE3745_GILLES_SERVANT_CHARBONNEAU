@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['set_5fpwm_5falpha_0',['set_pwm_alpha',['../pwm_8h.html#ae73ceaa047cc6769289b37f661dae3a1',1,'set_pwm_alpha(int alpha):&#160;pwm.c'],['../pwm_8c.html#ae73ceaa047cc6769289b37f661dae3a1',1,'set_pwm_alpha(int alpha):&#160;pwm.c']]],
-  ['shell_2ec_1',['shell.c',['../shell_8c.html',1,'']]],
-  ['shell_2eh_2',['shell.h',['../shell_8h.html',1,'']]],
-  ['shell_5finit_3',['shell_init',['../shell_8h.html#a1e1a7212cd1e25d36ce85620f03f996e',1,'Shell_Init(void):&#160;shell.c'],['../shell_8c.html#a1e1a7212cd1e25d36ce85620f03f996e',1,'Shell_Init(void):&#160;shell.c']]],
-  ['shell_5floop_4',['Shell_Loop',['../shell_8c.html#a9f70d5542e7f7f470ff7cd7d482caeb7',1,'shell.c']]],
-  ['systemclock_5fconfig_5',['SystemClock_Config',['../main_8c.html#a70af21c671abfcc773614a9a4f63d920',1,'main.c']]]
+  ['pwm_2ec_0',['pwm.c',['../pwm_8c.html',1,'']]],
+  ['pwm_2eh_1',['pwm.h',['../pwm_8h.html',1,'']]],
+  ['pwm_5fstart_2',['pwm_start',['../pwm_8h.html#ad405ef7080a8cea5c9ac23ba25da1fbb',1,'pwm_start(void):&#160;pwm.c'],['../pwm_8c.html#ad405ef7080a8cea5c9ac23ba25da1fbb',1,'pwm_start(void):&#160;pwm.c']]],
+  ['pwm_5fstop_3',['pwm_stop',['../pwm_8h.html#aec8f4f09d7d0222e947bea4b37fc33c2',1,'pwm_stop(void):&#160;pwm.c'],['../pwm_8c.html#aec8f4f09d7d0222e947bea4b37fc33c2',1,'pwm_stop(void):&#160;pwm.c']]]
 ];
