@@ -13,3 +13,8 @@ Ajouter le calcul pour les dead times
 Ajouter le calcul pour ARR et PSC
 
 Faire la mise en page et comprendre pourquoi le doxygen veut pas tout commit
+Dead Time 
+Fréquence horloge =1/170mHz
+                  =5.88*10^-9
+                  dead time = 100ns
+                  100ns/5.88*10^-9= 17 donc dead time =17 d'aprés la doc de ST d=X*T eavec T fréqeunce d'horloge d dead time désiré et X nombre de tick (entre 0 et 255)
