@@ -35,7 +35,7 @@ int		 	argc = 0;
 char*		token;
 int 		newCmdReady = 0;
 int			motorStart =0; //permet de connaitre l'état de fonctionnement du moteur (on ou off)
-
+extern float vitesse;
 /**
  * @brief Fonction d'initialisation du Shell
  * @note Affiche un message d'accueil lors du lançement du programme
@@ -128,17 +128,23 @@ void Shell_Loop(void){
 		}
 
 		else if(strcmp(argv[0],"stop")==0){//Fonction permettant d'éteindre les PWM
-					if(motorStart == 1){
-						pwm_stop();
-						int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Motor stop\r\n");
-						HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
-						motorStart =0;
-					}
-					else{
-						int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Motor is already off\r\n");
-						HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
-					}
-				}
+			if(motorStart == 1){
+				pwm_stop();
+				int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Motor stop\r\n");
+				HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
+				motorStart =0;
+			}
+			else{
+				int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Motor is already off\r\n");
+				HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
+			}
+		}
+		else if(strcmp(argv[0],"vitesse")==0){//Fonction permettant d'éteindre les PWM
+
+			int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Vitesse : %u\r\n", (int) vitesse);
+			HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
+
+		}
 
 		else{
 			HAL_UART_Transmit(&huart2, cmdNotFound, sizeof(cmdNotFound), HAL_MAX_DELAY);

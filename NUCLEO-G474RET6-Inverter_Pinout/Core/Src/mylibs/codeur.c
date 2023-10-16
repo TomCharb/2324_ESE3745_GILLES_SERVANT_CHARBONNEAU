@@ -8,16 +8,17 @@
  */
 #include "mylibs/pwm.h"
 #include "tim.h"
+#include "mylibs/codeur.h"
 
 
 uint32_t counter = 0; /*!<Valeur absolue du compteur*/
 int16_t pos = 0; //position du codeur (négative ou positive)
 int16_t oldpos = 0; //<position du codeur à l'instant précédent
 float vitesse = 0; //vitesse du modeur (le signe donne le sens)
-int dt=500; //mesure de la vitesse toutes les 500ms
+int dt=100; //mesure de la vitesse toutes les 100ms
 //int idx = 0; //nombre de ms
-int reduRation = 20;
-float hall_resolution = 20.4;
+float resolution = 4096;
+
 /**
  * @brief Démarre le compteur d'encodeur du Timer 3 en mode interruption.
  *
@@ -56,7 +57,11 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim){
  * @note Cette fonction doit être appelée toutes les 500ms à l'aide de systick pour mettre à jour la vitesse en temps réel.
  */
 void calc_speed(){
-	vitesse = (((pos - oldpos)*10)/reduRation)/hall_resolution; //speed in incr/sec, 2=1/500 ms,
+	vitesse = (((pos - oldpos)/dt)/resolution)*ms_To_s*10;
 	oldpos = pos;
+
 	//vitesse=(pos-old_pos)*1000/dt; //vitesse en front/s
+
 }
+
+

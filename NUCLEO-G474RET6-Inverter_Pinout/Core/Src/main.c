@@ -65,18 +65,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
-{
-	//	if(HAL_ADC_Stop_DMA(&hadc1)!= HAL_OK){
-	//		Error_Handler();
-	//		flag=1;
-	//	}
-	//Interupt Mode
-	//	adc_vall = HAL_ADC_GetValue(&hadc1);
-	//	HAL_ADC_Start_IT(&hadc1);
-	adc_vall= (buffer[0]-1351)/40.95;
-	flag = 1;
-}
+
 /* USER CODE END 0 */
 
 /**
@@ -114,6 +103,7 @@ int main(void)
   MX_TIM3_Init();
   MX_USART2_UART_Init();
   MX_USART3_UART_Init();
+  MX_TIM16_Init();
   /* USER CODE BEGIN 2 */
 	//	HAL_ADC_Start_IT(&hadc1);
 	//if(HAL_OK =! HAL_ADCEx_Calibration_Start(&hadc1,ADC_SINGLE_ENDED)){
@@ -122,7 +112,7 @@ int main(void)
 	if(HAL_OK != HAL_ADC_Start_DMA(&hadc1, buffer, ADC_BUF_SIZE)){
 		Error_Handler();
 	}
-
+	HAL_TIM_Base_Start_IT(&htim16);
 	codeur_start();
 	//	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
 	//	HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
@@ -138,6 +128,7 @@ int main(void)
 
 
 	Shell_Init();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -214,6 +205,18 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+{
+	//	if(HAL_ADC_Stop_DMA(&hadc1)!= HAL_OK){
+	//		Error_Handler();
+	//		flag=1;
+	//	}
+	//Interupt Mode
+	//	adc_vall = HAL_ADC_GetValue(&hadc1);
+	//	HAL_ADC_Start_IT(&hadc1);
+	adc_vall= (buffer[0]-1351)/40.95;
+	flag = 1;
+}
 /* USER CODE END 4 */
 
 /**
@@ -227,7 +230,9 @@ void SystemClock_Config(void)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */
-
+	if (htim->Instance == TIM16){
+			calc_speed();
+		}
   /* USER CODE END Callback 0 */
   if (htim->Instance == TIM6) {
     HAL_IncTick();
