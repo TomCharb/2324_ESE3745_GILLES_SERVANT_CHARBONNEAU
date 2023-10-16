@@ -1,3 +1,4 @@
 ../Core/Src/mylibs/pwm.c:28:6:pwm_start	1
 ../Core/Src/mylibs/pwm.c:47:6:pwm_stop	1
 ../Core/Src/mylibs/pwm.c:67:6:set_pwm_alpha	5
+../Core/Src/mylibs/pwm.c:99:6:set_pwm	1

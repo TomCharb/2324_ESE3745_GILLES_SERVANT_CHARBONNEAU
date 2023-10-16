@@ -95,3 +95,10 @@ void set_pwm_alpha(int alpha){
 	aTemp = alpha;
 
 }
+
+void set_pwm(float* alpha){
+	__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,alpha[2]);
+	__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,1024-alpha[2]);
+	HAL_Delay(50);
+}
+

@@ -14,7 +14,7 @@
 uint32_t counter = 0; /*!<Valeur absolue du compteur*/
 int16_t pos = 0; //position du codeur (négative ou positive)
 int16_t oldpos = 0; //<position du codeur à l'instant précédent
-float vitesse = 0; //vitesse du modeur (le signe donne le sens)
+float vitesse[3] ={0}; //vitesse du modeur (le signe donne le sens)
 int dt=100; //mesure de la vitesse toutes les 100ms
 //int idx = 0; //nombre de ms
 float resolution = 4096;
@@ -57,7 +57,9 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim){
  * @note Cette fonction doit être appelée toutes les 500ms à l'aide de systick pour mettre à jour la vitesse en temps réel.
  */
 void calc_speed(){
-	vitesse = (((pos - oldpos)/dt)/resolution)*ms_To_s*10;
+	vitesse[0]=vitesse[1];
+	vitesse[1]=vitesse[2];
+	vitesse[2] = (((pos - oldpos)/dt)/resolution)*ms_To_s*10;
 	oldpos = pos;
 
 	//vitesse=(pos-old_pos)*1000/dt; //vitesse en front/s

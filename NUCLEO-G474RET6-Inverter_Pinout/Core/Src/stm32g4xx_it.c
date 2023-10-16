@@ -47,7 +47,6 @@ extern int16_t pos; //position du codeur (négative ou positive)
 extern int16_t old_pos; //position du codeur à l'instant précédent
 extern int vitesse; //vitesse du modeur (le signe donne le sens)
 extern int dt; //mesure de la vitesse toutes les 500ms
-int idx; //nombre de ms
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -198,12 +197,6 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
-	idx++;
-	if (idx == dt)
-	{
-		calc_speed();
-		idx = 0;
-	}
   /* USER CODE END SysTick_IRQn 0 */
 
   /* USER CODE BEGIN SysTick_IRQn 1 */

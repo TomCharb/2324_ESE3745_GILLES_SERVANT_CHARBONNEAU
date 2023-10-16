@@ -36,6 +36,7 @@ char*		token;
 int 		newCmdReady = 0;
 int			motorStart =0; //permet de connaitre l'état de fonctionnement du moteur (on ou off)
 extern float vitesse;
+int 		consigne =0;
 /**
  * @brief Fonction d'initialisation du Shell
  * @note Affiche un message d'accueil lors du lançement du programme
@@ -145,6 +146,21 @@ void Shell_Loop(void){
 			HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
 
 		}
+
+		else if(strcmp(argv[0],"consigne")==0){//Fonction permettant de choisir le sens de rotation et la vitesse du moteur
+			if(atoi(argv[1])>=-50 & atoi(argv[1])<=50){//La valeur de vitesse reçue étant une chaine de caractères ASCII, atoi permet de la convertir en entier
+
+				consigne=(atoi(argv[1]));//Appelle à la fonction permettant de changer le rapport cyclique
+				int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Nouvelle consigne = %d\r\n",atoi(argv[1]));
+				HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
+			}
+			else{//Sécuritée permettant de ne pas avoir un rapport cyclique supérieur à 100
+				int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Erreur consigne doit être comprise entre -50 et 50 tour/s\r\n",atoi(argv[1]));
+				HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
+			}
+
+		}
+
 
 		else{
 			HAL_UART_Transmit(&huart2, cmdNotFound, sizeof(cmdNotFound), HAL_MAX_DELAY);
