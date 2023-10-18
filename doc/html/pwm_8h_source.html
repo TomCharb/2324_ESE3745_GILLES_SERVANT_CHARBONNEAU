@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>2324_ESE3745_GILLES_SERVAN_CHARBONNEAU: C:/Users/tomch/Documents/ENSEA/2023-2024/TP_ESE_moteur/2324_ESE3745_GILLES_SERVAN_CHARBONNEAU/NUCLEO-G474RET6-Inverter_Pinout/Core/Inc/mylibs/pwm.h Source File</title>
+<title>2324_ESE3745_GILLES_SERVAN_CHARBONNEAU: C:/Users/tomch/Desktop/Nouveau dossier/2324_ESE3745_GILLES_SERVAN_CHARBONNEAU/NUCLEO-G474RET6-Inverter_Pinout/Core/Inc/mylibs/pwm.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,14 +89,15 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keywordtype">void</span> <a class="code hl_function" href="pwm_8h.html#ad405ef7080a8cea5c9ac23ba25da1fbb">pwm_start</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">void</span> <a class="code hl_function" href="pwm_8h.html#aec8f4f09d7d0222e947bea4b37fc33c2">pwm_stop</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">void</span> <a class="code hl_function" href="pwm_8h.html#ae73ceaa047cc6769289b37f661dae3a1">set_pwm_alpha</a>(<span class="keywordtype">int</span> alpha);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">void</span> <a class="code hl_function" href="pwm_8h.html#ae73ceaa047cc6769289b37f661dae3a1">set_pwm_alpha</a>(<span class="keywordtype">int</span> <a class="code hl_variable" href="_p_i_d_8c.html#afdbf7bc80a3841f36f662b8b92982da3">alpha</a>);</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#endif </span><span class="comment">/* INC_MYLIBS_PWM_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a_p_i_d_8c_html_afdbf7bc80a3841f36f662b8b92982da3"><div class="ttname"><a href="_p_i_d_8c.html#afdbf7bc80a3841f36f662b8b92982da3">alpha</a></div><div class="ttdeci">float alpha[3]</div><div class="ttdoc">Tableau des valeurs de alpha.</div><div class="ttdef"><b>Definition</b> PID.c:43</div></div>
 <div class="ttc" id="apwm_8h_html_ad405ef7080a8cea5c9ac23ba25da1fbb"><div class="ttname"><a href="pwm_8h.html#ad405ef7080a8cea5c9ac23ba25da1fbb">pwm_start</a></div><div class="ttdeci">void pwm_start(void)</div><div class="ttdoc">initialise les commandes PWM pour 2 canaux et leur complémentaires</div><div class="ttdef"><b>Definition</b> pwm.c:28</div></div>
-<div class="ttc" id="apwm_8h_html_ae73ceaa047cc6769289b37f661dae3a1"><div class="ttname"><a href="pwm_8h.html#ae73ceaa047cc6769289b37f661dae3a1">set_pwm_alpha</a></div><div class="ttdeci">void set_pwm_alpha(int alpha)</div><div class="ttdoc">Configure le rapport cyclique des signaux PWM sur les canaux 1 et 2 du Timer 1 en fonction du rapport...</div><div class="ttdef"><b>Definition</b> pwm.c:67</div></div>
-<div class="ttc" id="apwm_8h_html_aec8f4f09d7d0222e947bea4b37fc33c2"><div class="ttname"><a href="pwm_8h.html#aec8f4f09d7d0222e947bea4b37fc33c2">pwm_stop</a></div><div class="ttdeci">void pwm_stop(void)</div><div class="ttdoc">Démarre le PWM.</div><div class="ttdef"><b>Definition</b> pwm.c:47</div></div>
+<div class="ttc" id="apwm_8h_html_ae73ceaa047cc6769289b37f661dae3a1"><div class="ttname"><a href="pwm_8h.html#ae73ceaa047cc6769289b37f661dae3a1">set_pwm_alpha</a></div><div class="ttdeci">void set_pwm_alpha(int alpha)</div><div class="ttdoc">Configure le signal PWM en fonction de la valeur alpha.</div><div class="ttdef"><b>Definition</b> pwm.c:62</div></div>
+<div class="ttc" id="apwm_8h_html_aec8f4f09d7d0222e947bea4b37fc33c2"><div class="ttname"><a href="pwm_8h.html#aec8f4f09d7d0222e947bea4b37fc33c2">pwm_stop</a></div><div class="ttdeci">void pwm_stop(void)</div><div class="ttdoc">Stop le PWM.</div><div class="ttdef"><b>Definition</b> pwm.c:46</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

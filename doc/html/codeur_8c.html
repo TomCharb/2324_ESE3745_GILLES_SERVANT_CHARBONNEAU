@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>2324_ESE3745_GILLES_SERVAN_CHARBONNEAU: C:/Users/tomch/Documents/ENSEA/2023-2024/TP_ESE_moteur/2324_ESE3745_GILLES_SERVAN_CHARBONNEAU/NUCLEO-G474RET6-Inverter_Pinout/Core/Src/mylibs/codeur.c File Reference</title>
+<title>2324_ESE3745_GILLES_SERVAN_CHARBONNEAU: C:/Users/tomch/Desktop/Nouveau dossier/2324_ESE3745_GILLES_SERVAN_CHARBONNEAU/NUCLEO-G474RET6-Inverter_Pinout/Core/Src/mylibs/codeur.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,6 +84,7 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="pwm_8h_source.html">mylibs/pwm.h</a>&quot;</code><br />
 <code>#include &quot;tim.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="codeur_8h_source.html">mylibs/codeur.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -100,22 +101,23 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a51322ddb267b4729d6b5f2bb05d49fff" id="r_a51322ddb267b4729d6b5f2bb05d49fff"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="codeur_8c.html#a51322ddb267b4729d6b5f2bb05d49fff">counter</a> = 0</td></tr>
+<tr class="memdesc:a51322ddb267b4729d6b5f2bb05d49fff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compteur de position du moteur.  <br /></td></tr>
 <tr class="separator:a51322ddb267b4729d6b5f2bb05d49fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74af96a639cd706734603438799a5867" id="r_a74af96a639cd706734603438799a5867"><td class="memItemLeft" align="right" valign="top"><a id="a74af96a639cd706734603438799a5867" name="a74af96a639cd706734603438799a5867"></a>
-int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>pos</b> = 0</td></tr>
+<tr class="memitem:a74af96a639cd706734603438799a5867" id="r_a74af96a639cd706734603438799a5867"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="codeur_8c.html#a74af96a639cd706734603438799a5867">pos</a> = 0</td></tr>
+<tr class="memdesc:a74af96a639cd706734603438799a5867"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position actuelle du moteur.  <br /></td></tr>
 <tr class="separator:a74af96a639cd706734603438799a5867"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43c5eafb6b6281533a7310d1731fcf52" id="r_a43c5eafb6b6281533a7310d1731fcf52"><td class="memItemLeft" align="right" valign="top"><a id="a43c5eafb6b6281533a7310d1731fcf52" name="a43c5eafb6b6281533a7310d1731fcf52"></a>
-int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>old_pos</b> = 0</td></tr>
-<tr class="separator:a43c5eafb6b6281533a7310d1731fcf52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b512d0a6dcc3c7d7e6dd9a7714852c4" id="r_a4b512d0a6dcc3c7d7e6dd9a7714852c4"><td class="memItemLeft" align="right" valign="top"><a id="a4b512d0a6dcc3c7d7e6dd9a7714852c4" name="a4b512d0a6dcc3c7d7e6dd9a7714852c4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>vitesse</b> = 0</td></tr>
-<tr class="separator:a4b512d0a6dcc3c7d7e6dd9a7714852c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e935675ee83a2516c575de3e892b12e" id="r_a8e935675ee83a2516c575de3e892b12e"><td class="memItemLeft" align="right" valign="top"><a id="a8e935675ee83a2516c575de3e892b12e" name="a8e935675ee83a2516c575de3e892b12e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>dt</b> =500</td></tr>
+<tr class="memitem:ab563447e439ab601445fb1baea210575" id="r_ab563447e439ab601445fb1baea210575"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="codeur_8c.html#ab563447e439ab601445fb1baea210575">oldpos</a> = 0</td></tr>
+<tr class="memdesc:ab563447e439ab601445fb1baea210575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position précédente du moteur.  <br /></td></tr>
+<tr class="separator:ab563447e439ab601445fb1baea210575"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc6198761393592a37db8a8be66ca66e" id="r_acc6198761393592a37db8a8be66ca66e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="codeur_8c.html#acc6198761393592a37db8a8be66ca66e">vitesse</a> [3] ={0}</td></tr>
+<tr class="memdesc:acc6198761393592a37db8a8be66ca66e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tableau pour stocker la vitesse du moteur.  <br /></td></tr>
+<tr class="separator:acc6198761393592a37db8a8be66ca66e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e935675ee83a2516c575de3e892b12e" id="r_a8e935675ee83a2516c575de3e892b12e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="codeur_8c.html#a8e935675ee83a2516c575de3e892b12e">dt</a> =100</td></tr>
+<tr class="memdesc:a8e935675ee83a2516c575de3e892b12e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Intervalle de mesure de la vitesse.  <br /></td></tr>
 <tr class="separator:a8e935675ee83a2516c575de3e892b12e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae40354a1051342eb5a9db005715dcfa9" id="r_ae40354a1051342eb5a9db005715dcfa9"><td class="memItemLeft" align="right" valign="top"><a id="ae40354a1051342eb5a9db005715dcfa9" name="ae40354a1051342eb5a9db005715dcfa9"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>idx</b> = 0</td></tr>
-<tr class="separator:ae40354a1051342eb5a9db005715dcfa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4333d786c60465d20826583358b2798d" id="r_a4333d786c60465d20826583358b2798d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="codeur_8c.html#a4333d786c60465d20826583358b2798d">resolution</a> = 4096</td></tr>
+<tr class="memdesc:a4333d786c60465d20826583358b2798d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Résolution du compteur pour un tour complet du moteur.  <br /></td></tr>
+<tr class="separator:a4333d786c60465d20826583358b2798d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Ce fichier contient les fonction nécéssaires à la gestion du codeur. </p>
@@ -144,7 +146,7 @@ Antoine </dd></dl>
 
 <p>Calcule la vitesse en fonction de la position actuelle et précédente. </p>
 <p>Cette fonction calcule la vitesse en utilisant la différence entre la position actuelle (pos) et la position précédente (old_pos). La vitesse est exprimée en fronts par seconde (front/s) et est stockée dans la variable 'vitesse'. Après le calcul, la variable 'old_pos' est mise à jour avec la valeur actuelle de 'pos', et 'idx' est réinitialisé à 0.</p>
-<dl class="section note"><dt>Note</dt><dd>Cette fonction doit être appelée toutes les 500ms à l'aide de systick pour mettre à jour la vitesse en temps réel. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction doit être appelée toutes les 100ms dans le Callback du TIM 16 </dd></dl>
 
 </div>
 </div>
@@ -210,7 +212,95 @@ Antoine </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Valeur absolue du compteur </p>
+
+<p>Compteur de position du moteur. </p>
+<p>Cette variable stocke la valeur absolue du compteur utilisé pour suivre la position du moteur. </p>
+
+</div>
+</div>
+<a id="a8e935675ee83a2516c575de3e892b12e" name="a8e935675ee83a2516c575de3e892b12e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e935675ee83a2516c575de3e892b12e">&#9670;&#160;</a></span>dt</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int dt =100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Intervalle de mesure de la vitesse. </p>
+<p>Cette variable spécifie l'intervalle de temps en millisecondes entre chaque mesure de vitesse. </p>
+
+</div>
+</div>
+<a id="ab563447e439ab601445fb1baea210575" name="ab563447e439ab601445fb1baea210575"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab563447e439ab601445fb1baea210575">&#9670;&#160;</a></span>oldpos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t oldpos = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Position précédente du moteur. </p>
+<p>Cette variable stocke la position du moteur à l'instant précédent. </p>
+
+</div>
+</div>
+<a id="a74af96a639cd706734603438799a5867" name="a74af96a639cd706734603438799a5867"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74af96a639cd706734603438799a5867">&#9670;&#160;</a></span>pos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t pos = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Position actuelle du moteur. </p>
+<p>Cette variable stocke la position actuelle du moteur, pouvant être négative ou positive. </p>
+
+</div>
+</div>
+<a id="a4333d786c60465d20826583358b2798d" name="a4333d786c60465d20826583358b2798d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4333d786c60465d20826583358b2798d">&#9670;&#160;</a></span>resolution</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float resolution = 4096</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Résolution du compteur pour un tour complet du moteur. </p>
+<p>Cette variable indique le nombre d'incréments du compteur nécessaires pour effectuer un tour complet du moteur. </p>
+
+</div>
+</div>
+<a id="acc6198761393592a37db8a8be66ca66e" name="acc6198761393592a37db8a8be66ca66e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc6198761393592a37db8a8be66ca66e">&#9670;&#160;</a></span>vitesse</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float vitesse[3] ={0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tableau pour stocker la vitesse du moteur. </p>
+<p>Tableau des valeurs de vitesse.</p>
+<p>Ce tableau contient trois éléments pour stocker les valeurs de vitesse du moteur à difféents instants </p>
 
 </div>
 </div>

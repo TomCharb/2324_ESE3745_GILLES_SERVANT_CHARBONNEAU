@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['counter_0',['counter',['../codeur_8c.html#a51322ddb267b4729d6b5f2bb05d49fff',1,'codeur.c']]]
+  ['alpha_0',['alpha',['../_p_i_d_8c.html#afdbf7bc80a3841f36f662b8b92982da3',1,'alpha:&#160;PID.c'],['../main_8c.html#afdbf7bc80a3841f36f662b8b92982da3',1,'alpha:&#160;PID.c']]]
 ];

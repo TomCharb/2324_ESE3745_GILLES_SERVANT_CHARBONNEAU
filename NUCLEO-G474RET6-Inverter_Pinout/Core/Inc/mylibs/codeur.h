@@ -1,5 +1,5 @@
-/*
- * codeur.h
+/**
+ *@file codeur.h
  *@brief Ce fichier contient les fonctions nécéssaires à la gestion des codeurs.
  *@date Oct 9, 2023
  *@author Tom

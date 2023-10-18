@@ -96,7 +96,7 @@ void Error_Handler(void);
 #define T_SWO_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
-
+#define ADC_BUF_SIZE 1 //taille du buffer de l'ADC
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

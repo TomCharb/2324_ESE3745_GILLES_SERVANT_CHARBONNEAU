@@ -31,6 +31,7 @@
 #include "mylibs/pwm.h"
 #include "mylibs/codeur.h"
 #include "mylibs/PID.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -40,7 +41,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define ADC_BUF_SIZE 1
+
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -51,17 +53,25 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-uint32_t buffer[ADC_BUF_SIZE];
-uint8_t flag=0;
-float adc_vall[3]={0};
-extern uint8_t uartTxBuffer[UART_TX_BUFFER_SIZE];
-h_PID_t	*  h_PI;
+
+//Variables ADC
+uint32_t buffer[ADC_BUF_SIZE]; //buffer de l'ADC
+uint8_t flag=0;				   //flag de l'ADC en DMA
+float Imes[3]={0};		       //valeurs de courant pour les 3 derniers instants
+
+//Variables asservissement en courant
+extern float Iconsigne[3];
+extern float erreur_I[3];
+extern float alpha[3];
 h_PID_t *  h_PI_I;
-extern float vitesse[3];
+
+//Variables asservissementr en vitesse
 extern int consigne;
-extern float pid_output[3];
-extern float Current_output[3];
 extern float erreur[3];
+extern float vitesse[3];
+h_PID_t	*  h_PI;
+
+extern uint8_t uartTxBuffer[UART_TX_BUFFER_SIZE];
 
 /* USER CODE END PV */
 
@@ -112,23 +122,31 @@ int main(void)
 	MX_USART2_UART_Init();
 	MX_USART3_UART_Init();
 	MX_TIM16_Init();
+
 	/* USER CODE BEGIN 2 */
 
+	//On start le DMA
 	if(HAL_OK != HAL_ADC_Start_DMA(&hadc1, buffer, ADC_BUF_SIZE)){
 		Error_Handler();
 	}
-	HAL_TIM_Base_Start_IT(&htim16);
+
+	//On start le codeur et le timer de vitesse
 	codeur_start();
 
 	//PI Speed
 	h_PI->b0=0.48;
 	h_PI->b1=0.247;
 	h_PI->b2=-0.23;
+
 	//PI Current
 	h_PI_I->b0=0.9325;
 	h_PI_I->b1=0.0001235;
 	h_PI_I->b2=-0.73;
+
+	//Démarrage des timers pour les PWM
 	pwm_start();
+
+	//Lancement du Shell
 	Shell_Init();
 
 	/* USER CODE END 2 */
@@ -138,15 +156,16 @@ int main(void)
 	while (1)
 	{
 		Shell_Loop();
+
 		if(flag){
 			nb_loop = (nb_loop + 1)%20000;
 			if(nb_loop == 0){
-				int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Valeur : %4d \r\n", adc_vall);
+				int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Valeur : %4d \r\n", Imes);
 				HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
 			}
 			flag = 0;
-
 		}
+
 		//		HAL_ADC_Start(&hadc1);
 		//		HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
 		//		int value = HAL_ADC_GetValue(&hadc1);
@@ -154,6 +173,7 @@ int main(void)
 		//		HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
 
 		//		HAL_Delay(1000);
+
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
@@ -208,6 +228,12 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
+/*
+ * @brief
+ * Ce Callback est appelé à chaque nouvelle mesure de courant
+ * Il est déclenché par le timer 1 donc à une fréquence d'environ 20kHz
+ * Ici on réalise l'asservissement en courant
+ */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
 	//	if(HAL_ADC_Stop_DMA(&hadc1)!= HAL_OK){
@@ -217,14 +243,21 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 	//Interupt Mode
 	//	adc_vall = HAL_ADC_GetValue(&hadc1);
 	//	HAL_ADC_Start_IT(&hadc1);
-	adc_vall[0]=adc_vall[1];
-	adc_vall[1]=adc_vall[2];
-	adc_vall[2]= (buffer[0]-1351)/40.95;
-	Erreur_I(pid_output,adc_vall);
-	Current_PI(h_PI_I,pid_output,Current_output);
-	Out(Current_output);
-	flag = 1;
 
+	Imes[0]=Imes[1];
+	Imes[1]=Imes[2];
+	Imes[2]= (buffer[0]-1351)/40.95; //Nouvelle valeur de courant
+
+	//Calcul de l'erreur en courant
+	Erreur_I(Iconsigne,Imes);
+
+	//Calcul de la nouvelle valeur de alpha après le PI
+	Current_PI(h_PI_I,erreur_I,alpha);
+
+	//Application des nouvelles commandes PWM
+	NewPWM(alpha);
+
+	flag = 1;
 }
 /* USER CODE END 4 */
 
@@ -239,11 +272,21 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	/* USER CODE BEGIN Callback 0 */
+	/*@brief
+	 * Callback appelé toutes les 100ms lors de la mesure de la vitesse
+	 * Ici on réalise l'asservissement en vitesse
+	 */
 	if (htim->Instance == TIM16){
+		//Calcul de la vitesse de rotation du moteur
 		calc_speed();
-		Erreur(consigne);
-		PID(h_PI,erreur,pid_output);
+
+		//Calcul de l'erreur en vitesse
+		Erreur(consigne, erreur, vitesse);
+
+		//Calcul de la nouvelle consigne en courant grâce au PI
+		Speed_PI(h_PI,erreur,Iconsigne);
 	}
+
 	/* USER CODE END Callback 0 */
 	if (htim->Instance == TIM6) {
 		HAL_IncTick();

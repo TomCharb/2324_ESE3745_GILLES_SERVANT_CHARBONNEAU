@@ -1,6 +1,6 @@
 /**
- *@file pwm.h
- *@brief Ce fichier contient les fonctions nécéssaires à la génération des signaux PWM pour controler le moteur.
+ *@file PID.h
+ *@brief Ce fichier contient les fonctions nécéssaires à l'asservissement
  *@date Oct 2, 2023
  *@author Tom
  *@author Baptiste
@@ -17,11 +17,13 @@ typedef struct h_PID_struct
 	int ordre;
 }h_PID_t;
 
-void ID_BO(int alpha);
-int Erreur(float consigne);
-int Erreur_I(float* consigne_current,float* adc_value);
-int PID(h_PID_t * h_PID,float *input,float* output);
-int Current_PI(h_PID_t * h_PID ,float* input, float* output);
-float Out(float* input);
+//void ID_BO(int alpha);
+
+int Erreur(float consigne, float * erreur, float * vitesse);
+int Erreur_I(float * Iconsigne, float * Imes);
+int Speed_PI(h_PID_t * h_PID, float * input,float * output);
+int Current_PI(h_PID_t * h_PID, float * input, float * output);
+int NewPWM(float * input);
+void start_asserv(void);
 
 #endif /* INC_MYLIBS_PID_H_ */

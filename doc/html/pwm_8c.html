@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>2324_ESE3745_GILLES_SERVAN_CHARBONNEAU: C:/Users/tomch/Documents/ENSEA/2023-2024/TP_ESE_moteur/2324_ESE3745_GILLES_SERVAN_CHARBONNEAU/NUCLEO-G474RET6-Inverter_Pinout/Core/Src/mylibs/pwm.c File Reference</title>
+<title>2324_ESE3745_GILLES_SERVAN_CHARBONNEAU: C:/Users/tomch/Desktop/Nouveau dossier/2324_ESE3745_GILLES_SERVAN_CHARBONNEAU/NUCLEO-G474RET6-Inverter_Pinout/Core/Src/mylibs/pwm.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -91,11 +91,14 @@ Functions</h2></td></tr>
 <tr class="memdesc:ad405ef7080a8cea5c9ac23ba25da1fbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Démarre le PWM.  <br /></td></tr>
 <tr class="separator:ad405ef7080a8cea5c9ac23ba25da1fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec8f4f09d7d0222e947bea4b37fc33c2" id="r_aec8f4f09d7d0222e947bea4b37fc33c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pwm_8c.html#aec8f4f09d7d0222e947bea4b37fc33c2">pwm_stop</a> (void)</td></tr>
-<tr class="memdesc:aec8f4f09d7d0222e947bea4b37fc33c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Démarre le PWM.  <br /></td></tr>
+<tr class="memdesc:aec8f4f09d7d0222e947bea4b37fc33c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop le PWM.  <br /></td></tr>
 <tr class="separator:aec8f4f09d7d0222e947bea4b37fc33c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae73ceaa047cc6769289b37f661dae3a1" id="r_ae73ceaa047cc6769289b37f661dae3a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pwm_8c.html#ae73ceaa047cc6769289b37f661dae3a1">set_pwm_alpha</a> (int alpha)</td></tr>
-<tr class="memdesc:ae73ceaa047cc6769289b37f661dae3a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure le rapport cyclique des signaux PWM sur les canaux 1 et 2 du Timer 1 en fonction du rapport cyclique alpha.  <br /></td></tr>
+<tr class="memitem:ae73ceaa047cc6769289b37f661dae3a1" id="r_ae73ceaa047cc6769289b37f661dae3a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pwm_8c.html#ae73ceaa047cc6769289b37f661dae3a1">set_pwm_alpha</a> (int <a class="el" href="_p_i_d_8c.html#afdbf7bc80a3841f36f662b8b92982da3">alpha</a>)</td></tr>
+<tr class="memdesc:ae73ceaa047cc6769289b37f661dae3a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure le signal PWM en fonction de la valeur alpha.  <br /></td></tr>
 <tr class="separator:ae73ceaa047cc6769289b37f661dae3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d323b3570d7c3c85049c1522a279508" id="r_a5d323b3570d7c3c85049c1522a279508"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pwm_8c.html#a5d323b3570d7c3c85049c1522a279508">set_pwm</a> (float <a class="el" href="_p_i_d_8c.html#afdbf7bc80a3841f36f662b8b92982da3">alpha</a>)</td></tr>
+<tr class="memdesc:a5d323b3570d7c3c85049c1522a279508"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure le signal PWM en fonction de la valeur alpha.  <br /></td></tr>
+<tr class="separator:a5d323b3570d7c3c85049c1522a279508"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -151,8 +154,35 @@ Antoine </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Démarre le PWM. </p>
+<p>Stop le PWM. </p>
 <p>Cette fonction arrete le PWM sur les canaux 1 et 2 du Timer 1. Elle désactive la sortie PWM et la sortie complémentaire PWM (PWMN) sur ces canaux. </p>
+
+</div>
+</div>
+<a id="a5d323b3570d7c3c85049c1522a279508" name="a5d323b3570d7c3c85049c1522a279508"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d323b3570d7c3c85049c1522a279508">&#9670;&#160;</a></span>set_pwm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_pwm </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>alpha</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configure le signal PWM en fonction de la valeur alpha. </p>
+<p>Cette fonction configure le signal PWM en ajustant sans rampe.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">alpha</td><td>La valeur alpha qui détermine la configuration du signal PWM. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -172,15 +202,14 @@ Antoine </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Configure le rapport cyclique des signaux PWM sur les canaux 1 et 2 du Timer 1 en fonction du rapport cyclique alpha. </p>
-<p>Cette fonction configure le rapport cyclique des signaux PWM sur les canaux 1 et 2 du Timer 1 en fonction d'un paramètre alpha fourni en pourcentage. Le paramètre alpha doit être compris entre 0 et 100, où 0 signifie un rapport cyclique de 0% sur le canal 1 et 100 signifie un rapport cyclique de 0% sur le canal 2.</p>
+<p>Configure le signal PWM en fonction de la valeur alpha. </p>
+<p>Cette fonction ajuste le signal PWM pour correspondre à la valeur alpha spécifiée avec une rampe pour ne pas cramer le moteur.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">alpha</td><td>La valeur du paramètre alpha en pourcentage (entre 0 et 100).</td></tr>
+    <tr><td class="paramname">alpha</td><td>La valeur du rapport cyclique qui détermine la configuration du signal PWM. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>Assurez-vous que le Timer 1 est configuré correctement pour le fonctionnement PWM avant d'appeler cette fonction. </dd></dl>
 
 </div>
 </div>

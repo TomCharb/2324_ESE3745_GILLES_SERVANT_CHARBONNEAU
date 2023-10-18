@@ -9,7 +9,7 @@
 #define INC_MYLIBS_SHELL_H_
 
 #define UART_RX_BUFFER_SIZE 1
-#define UART_TX_BUFFER_SIZE 64
+#define UART_TX_BUFFER_SIZE 100
 #define CMD_BUFFER_SIZE 64
 #define MAX_ARGS 9
 #define ASCII_LF 0x0A			// LF = line feed, saut de ligne

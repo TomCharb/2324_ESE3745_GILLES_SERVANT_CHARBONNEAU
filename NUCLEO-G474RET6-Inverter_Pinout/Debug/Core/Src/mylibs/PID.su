@@ -1,5 +1,6 @@
-../Core/Src/mylibs/PID.c:45:5:Erreur	16	static
-../Core/Src/mylibs/PID.c:52:5:Erreur_I	16	static
-../Core/Src/mylibs/PID.c:59:5:PID	24	static
-../Core/Src/mylibs/PID.c:69:5:Current_PI	24	static
-../Core/Src/mylibs/PID.c:73:7:Out	16	static
+../Core/Src/mylibs/PID.c:88:5:Erreur	24	static
+../Core/Src/mylibs/PID.c:104:5:Erreur_I	16	static
+../Core/Src/mylibs/PID.c:121:5:Speed_PI	24	static
+../Core/Src/mylibs/PID.c:136:5:Current_PI	24	static
+../Core/Src/mylibs/PID.c:153:5:NewPWM	16	static
+../Core/Src/mylibs/PID.c:164:6:start_asserv	8	static

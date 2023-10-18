@@ -10,14 +10,42 @@
 #include "tim.h"
 #include "mylibs/codeur.h"
 
-
-uint32_t counter = 0; /*!<Valeur absolue du compteur*/
-int16_t pos = 0; //position du codeur (négative ou positive)
-int16_t oldpos = 0; //<position du codeur à l'instant précédent
-float vitesse[3] ={0}; //vitesse du modeur (le signe donne le sens)
-int dt=100; //mesure de la vitesse toutes les 100ms
-//int idx = 0; //nombre de ms
-float resolution = 4096;
+/**
+ * @brief Compteur de position du moteur.
+ *
+ * Cette variable stocke la valeur absolue du compteur utilisé pour suivre la position du moteur.
+ */
+uint32_t counter = 0;    //Valeur absolue du compteur
+/**
+ * @brief Position actuelle du moteur.
+ *
+ * Cette variable stocke la position actuelle du moteur, pouvant être négative ou positive.
+ */
+int16_t pos = 0;         //position du codeur (négative ou positive)
+/**
+ * @brief Position précédente du moteur.
+ *
+ * Cette variable stocke la position du moteur à l'instant précédent.
+ */
+int16_t oldpos = 0;      //position du codeur à l'instant précédent
+/**
+ * @brief Tableau pour stocker la vitesse du moteur.
+ *
+ * Ce tableau contient trois éléments pour stocker les valeurs de vitesse du moteur à difféents instants
+ */
+float vitesse[3] ={0};   //vitesse du modeur (le signe donne le sens)
+/**
+ * @brief Intervalle de mesure de la vitesse.
+ *
+ * Cette variable spécifie l'intervalle de temps en millisecondes entre chaque mesure de vitesse.
+ */
+int dt=100; 			 //mesure de la vitesse toutes les 100ms
+/**
+ * @brief Résolution du compteur pour un tour complet du moteur.
+ *
+ * Cette variable indique le nombre d'incréments du compteur nécessaires pour effectuer un tour complet du moteur.
+ */
+float resolution = 4096; //nombre d'incrément du compteur pour un tour du moteur
 
 /**
  * @brief Démarre le compteur d'encodeur du Timer 3 en mode interruption.
@@ -42,9 +70,10 @@ void codeur_start(void){
  *
  * @note Cette fonction est destinée à être utilisée en tant que rappel (callback) pour gérer la capture d'interruption du Timer.
  */
+
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim){
 	counter = __HAL_TIM_GET_COUNTER(&htim3); //valeur du compteur absolue
-	pos = (int16_t)counter; //valeur du compteur avec les valeurs négatives
+	pos = (int16_t)counter; 				 //valeur du compteur avec les valeurs négatives
 }
 
 /**
@@ -54,16 +83,13 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim){
  * La vitesse est exprimée en fronts par seconde (front/s) et est stockée dans la variable 'vitesse'.
  * Après le calcul, la variable 'old_pos' est mise à jour avec la valeur actuelle de 'pos', et 'idx' est réinitialisé à 0.
  *
- * @note Cette fonction doit être appelée toutes les 500ms à l'aide de systick pour mettre à jour la vitesse en temps réel.
+ * @note Cette fonction doit être appelée toutes les 100ms dans le Callback du TIM 16
  */
 void calc_speed(){
 	vitesse[0]=vitesse[1];
 	vitesse[1]=vitesse[2];
 	vitesse[2] = (((pos - oldpos)/dt)/resolution)*ms_To_s*10;
 	oldpos = pos;
-
-	//vitesse=(pos-old_pos)*1000/dt; //vitesse en front/s
-
 }
 
 

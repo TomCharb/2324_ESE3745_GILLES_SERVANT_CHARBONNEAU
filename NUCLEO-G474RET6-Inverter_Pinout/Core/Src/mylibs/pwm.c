@@ -33,11 +33,10 @@ void pwm_start(void){
 	HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
 
 	aTemp=50;
-
 }
 
 /**
- * @brief Démarre le PWM.
+ * @brief Stop le PWM.
  *
  * Cette fonction arrete le PWM sur les canaux 1 et 2 du Timer 1.
  * Elle désactive la sortie PWM et la sortie complémentaire PWM (PWMN) sur ces canaux.
@@ -54,15 +53,11 @@ void pwm_stop(void){
 }
 
 /**
- * @brief Configure le rapport cyclique des signaux PWM sur les canaux 1 et 2 du Timer 1 en fonction du rapport cyclique alpha.
+ * @brief Configure le signal PWM en fonction de la valeur alpha.
  *
- * Cette fonction configure le rapport cyclique des signaux PWM sur les canaux 1 et 2 du Timer 1 en fonction
- * d'un paramètre alpha fourni en pourcentage. Le paramètre alpha doit être compris entre 0 et 100, où 0
- * signifie un rapport cyclique de 0% sur le canal 1 et 100 signifie un rapport cyclique de 0% sur le canal 2.
+ * Cette fonction ajuste le signal PWM pour correspondre à la valeur alpha spécifiée avec une rampe pour ne pas cramer le moteur.
  *
- * @param alpha La valeur du paramètre alpha en pourcentage (entre 0 et 100).
- *
- * @note Assurez-vous que le Timer 1 est configuré correctement pour le fonctionnement PWM avant d'appeler cette fonction.
+ * @param alpha La valeur du rapport cyclique qui détermine la configuration du signal PWM.
  */
 void set_pwm_alpha(int alpha){
 	int a1;
@@ -96,9 +91,15 @@ void set_pwm_alpha(int alpha){
 
 }
 
-void set_pwm(float* alpha){
-	__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,alpha[2]);
-	__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,1024-alpha[2]);
-	HAL_Delay(50);
+/**
+ * @brief Configure le signal PWM en fonction de la valeur alpha.
+ *
+ * Cette fonction configure le signal PWM en ajustant sans rampe.
+ *
+ * @param alpha La valeur alpha qui détermine la configuration du signal PWM.
+ */
+void set_pwm(float alpha){
+	__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,alpha);
+	__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,1024-alpha);
 }
 

@@ -11,6 +11,7 @@
 #include "usart.h"
 #include "mylibs/shell.h"
 #include "mylibs/pwm.h"
+#include "mylibs/PID.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -109,7 +110,7 @@ void Shell_Loop(void){
 				}
 			}
 			else{
-				int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Erreur alpha doit être compris entre 0 et 100\r\n",atoi(argv[1]));
+				int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Erreur alpha doit être compris entre 0 et 100\r\n");
 				HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
 			}
 		}
@@ -140,25 +141,37 @@ void Shell_Loop(void){
 				HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
 			}
 		}
-		else if(strcmp(argv[0],"vitesse")==0){//Fonction permettant d'éteindre les PWM
+		else if(strcmp(argv[0],"vitesse")==0){//Fonction permettant renvoi la vitesse si elle est calculée (asservissement activé)
 
 			int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Vitesse : %u\r\n", (int) vitesse);
 			HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
 
 		}
-
+		//Obsolette
 		else if(strcmp(argv[0],"consigne")==0){//Fonction permettant de choisir le sens de rotation et la vitesse du moteur
-			if(atoi(argv[1])>=-50 & atoi(argv[1])<=50){//La valeur de vitesse reçue étant une chaine de caractères ASCII, atoi permet de la convertir en entier
+			if((atoi(argv[1])>=-50) & (atoi(argv[1])<=50)){//La valeur de vitesse reçue étant une chaine de caractères ASCII, atoi permet de la convertir en entier
 
 				consigne=(atoi(argv[1]));//Appelle à la fonction permettant de changer le rapport cyclique
 				int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Nouvelle consigne = %d\r\n",atoi(argv[1]));
 				HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
 			}
 			else{//Sécuritée permettant de ne pas avoir un rapport cyclique supérieur à 100
-				int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Erreur consigne doit être comprise entre -50 et 50 tour/s\r\n",atoi(argv[1]));
+				int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Erreur consigne doit être comprise entre -50 et 50 tour/s\r\n");
 				HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
 			}
 
+		}
+		else if(strcmp(argv[0],"asserv")==0){//Fonction permettant de lancer l'asservissement
+			if((atoi(argv[1])>=-3000) & (atoi(argv[1])<=3000)){
+				consigne = atoi(argv[1]);
+				start_asserv();
+				int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Nouvelle consigne = %d\r\n",atoi(argv[1]));
+				HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
+			}
+			else{//Sécuritée permettant de ne pas avoir une vitesse inatteignable
+				int uartTxStringLength = snprintf((char *)uartTxBuffer, UART_TX_BUFFER_SIZE, "Erreur consigne doit être comprise entre + ou - 3000 tour/min\r\n");
+				HAL_UART_Transmit(&huart2, uartTxBuffer, uartTxStringLength, HAL_MAX_DELAY);
+			}
 		}
 
 

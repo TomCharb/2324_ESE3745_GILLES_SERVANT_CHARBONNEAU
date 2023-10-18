@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>2324_ESE3745_GILLES_SERVAN_CHARBONNEAU: C:/Users/tomch/Documents/ENSEA/2023-2024/TP_ESE_moteur/2324_ESE3745_GILLES_SERVAN_CHARBONNEAU/NUCLEO-G474RET6-Inverter_Pinout/Core/Src/main.c File Reference</title>
+<title>2324_ESE3745_GILLES_SERVAN_CHARBONNEAU: C:/Users/tomch/Desktop/Nouveau dossier/2324_ESE3745_GILLES_SERVAN_CHARBONNEAU/NUCLEO-G474RET6-Inverter_Pinout/Core/Src/main.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,7 +74,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">main.c File Reference</div></div>
@@ -92,25 +91,20 @@ $(function() {
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="shell_8h_source.html">mylibs/shell.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="pwm_8h_source.html">mylibs/pwm.h</a>&quot;</code><br />
-<code>#include &quot;mylibs/codeur.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="codeur_8h_source.html">mylibs/codeur.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_p_i_d_8h_source.html">mylibs/PID.h</a>&quot;</code><br />
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a84ad8abb26bff116df93ff56794334b9" id="r_a84ad8abb26bff116df93ff56794334b9"><td class="memItemLeft" align="right" valign="top"><a id="a84ad8abb26bff116df93ff56794334b9" name="a84ad8abb26bff116df93ff56794334b9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ADC_BUF_SIZE</b>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a84ad8abb26bff116df93ff56794334b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a70af21c671abfcc773614a9a4f63d920" id="r_a70af21c671abfcc773614a9a4f63d920"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a70af21c671abfcc773614a9a4f63d920">SystemClock_Config</a> (void)</td></tr>
 <tr class="memdesc:a70af21c671abfcc773614a9a4f63d920"><td class="mdescLeft">&#160;</td><td class="mdescRight">System Clock Configuration.  <br /></td></tr>
 <tr class="separator:a70af21c671abfcc773614a9a4f63d920"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af20a88180db1113be1e89266917d148b" id="r_af20a88180db1113be1e89266917d148b"><td class="memItemLeft" align="right" valign="top"><a id="af20a88180db1113be1e89266917d148b" name="af20a88180db1113be1e89266917d148b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>HAL_ADC_ConvCpltCallback</b> (ADC_HandleTypeDef *hadc)</td></tr>
-<tr class="separator:af20a88180db1113be1e89266917d148b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe" id="r_a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
 <tr class="memdesc:a840291bc02cba5474a4cb46a9b9566fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">The application entry point.  <br /></td></tr>
 <tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af20a88180db1113be1e89266917d148b" id="r_af20a88180db1113be1e89266917d148b"><td class="memItemLeft" align="right" valign="top"><a id="af20a88180db1113be1e89266917d148b" name="af20a88180db1113be1e89266917d148b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>HAL_ADC_ConvCpltCallback</b> (ADC_HandleTypeDef *hadc)</td></tr>
+<tr class="separator:af20a88180db1113be1e89266917d148b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a3b0ad512a6e6c6157440b68d395eac" id="r_a8a3b0ad512a6e6c6157440b68d395eac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a8a3b0ad512a6e6c6157440b68d395eac">HAL_TIM_PeriodElapsedCallback</a> (TIM_HandleTypeDef *htim)</td></tr>
 <tr class="memdesc:a8a3b0ad512a6e6c6157440b68d395eac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Period elapsed callback in non blocking mode.  <br /></td></tr>
 <tr class="separator:a8a3b0ad512a6e6c6157440b68d395eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,9 +120,33 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>buffer</b> [ADC_B
 <tr class="memitem:aff31312fb16705aa73c53b945a1a6b30" id="r_aff31312fb16705aa73c53b945a1a6b30"><td class="memItemLeft" align="right" valign="top"><a id="aff31312fb16705aa73c53b945a1a6b30" name="aff31312fb16705aa73c53b945a1a6b30"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>flag</b> =0</td></tr>
 <tr class="separator:aff31312fb16705aa73c53b945a1a6b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ca6f0f6d02519e2e2dd97b668210ead" id="r_a7ca6f0f6d02519e2e2dd97b668210ead"><td class="memItemLeft" align="right" valign="top"><a id="a7ca6f0f6d02519e2e2dd97b668210ead" name="a7ca6f0f6d02519e2e2dd97b668210ead"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>adc_vall</b></td></tr>
-<tr class="separator:a7ca6f0f6d02519e2e2dd97b668210ead"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa33d4e000ef67ced3991f62061dab59f" id="r_aa33d4e000ef67ced3991f62061dab59f"><td class="memItemLeft" align="right" valign="top"><a id="aa33d4e000ef67ced3991f62061dab59f" name="aa33d4e000ef67ced3991f62061dab59f"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>Imes</b> [3] ={0}</td></tr>
+<tr class="separator:aa33d4e000ef67ced3991f62061dab59f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a057b4b5873a54b6f02751f56b707aa42" id="r_a057b4b5873a54b6f02751f56b707aa42"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a057b4b5873a54b6f02751f56b707aa42">Iconsigne</a> [3]</td></tr>
+<tr class="memdesc:a057b4b5873a54b6f02751f56b707aa42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tableau des consignes de courant.  <br /></td></tr>
+<tr class="separator:a057b4b5873a54b6f02751f56b707aa42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a518bdc6fb465afa7ebeb19f7df67af05" id="r_a518bdc6fb465afa7ebeb19f7df67af05"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a518bdc6fb465afa7ebeb19f7df67af05">erreur_I</a> [3]</td></tr>
+<tr class="memdesc:a518bdc6fb465afa7ebeb19f7df67af05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tableau des erreurs de courant.  <br /></td></tr>
+<tr class="separator:a518bdc6fb465afa7ebeb19f7df67af05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdbf7bc80a3841f36f662b8b92982da3" id="r_afdbf7bc80a3841f36f662b8b92982da3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#afdbf7bc80a3841f36f662b8b92982da3">alpha</a> [3]</td></tr>
+<tr class="memdesc:afdbf7bc80a3841f36f662b8b92982da3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tableau des valeurs de alpha.  <br /></td></tr>
+<tr class="separator:afdbf7bc80a3841f36f662b8b92982da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace0094c24d02662e43f45bc1c541efe6" id="r_ace0094c24d02662e43f45bc1c541efe6"><td class="memItemLeft" align="right" valign="top"><a id="ace0094c24d02662e43f45bc1c541efe6" name="ace0094c24d02662e43f45bc1c541efe6"></a>
+<a class="el" href="structh___p_i_d__struct.html">h_PID_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>h_PI_I</b></td></tr>
+<tr class="separator:ace0094c24d02662e43f45bc1c541efe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55236acc7337905b91071f99e89c8b46" id="r_a55236acc7337905b91071f99e89c8b46"><td class="memItemLeft" align="right" valign="top"><a id="a55236acc7337905b91071f99e89c8b46" name="a55236acc7337905b91071f99e89c8b46"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>consigne</b></td></tr>
+<tr class="separator:a55236acc7337905b91071f99e89c8b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ef77b325a96874e746ae738ca81b19d" id="r_a0ef77b325a96874e746ae738ca81b19d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a0ef77b325a96874e746ae738ca81b19d">erreur</a> [3]</td></tr>
+<tr class="memdesc:a0ef77b325a96874e746ae738ca81b19d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tableau des erreurs de vitesse.  <br /></td></tr>
+<tr class="separator:a0ef77b325a96874e746ae738ca81b19d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc6198761393592a37db8a8be66ca66e" id="r_acc6198761393592a37db8a8be66ca66e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#acc6198761393592a37db8a8be66ca66e">vitesse</a> [3]</td></tr>
+<tr class="memdesc:acc6198761393592a37db8a8be66ca66e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tableau pour stocker la vitesse du moteur.  <br /></td></tr>
+<tr class="separator:acc6198761393592a37db8a8be66ca66e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca071161082be07170e6ce4b2c4d28a1" id="r_aca071161082be07170e6ce4b2c4d28a1"><td class="memItemLeft" align="right" valign="top"><a id="aca071161082be07170e6ce4b2c4d28a1" name="aca071161082be07170e6ce4b2c4d28a1"></a>
+<a class="el" href="structh___p_i_d__struct.html">h_PID_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>h_PI</b></td></tr>
+<tr class="separator:aca071161082be07170e6ce4b2c4d28a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f98e2db2fa0d8f0cfd87b887576207f" id="r_a3f98e2db2fa0d8f0cfd87b887576207f"><td class="memItemLeft" align="right" valign="top"><a id="a3f98e2db2fa0d8f0cfd87b887576207f" name="a3f98e2db2fa0d8f0cfd87b887576207f"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>uartTxBuffer</b> [UART_TX_BUFFER_SIZE]</td></tr>
 <tr class="separator:a3f98e2db2fa0d8f0cfd87b887576207f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -250,6 +268,133 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>uartTxBuffer</b> [
 <p>Configure the main internal regulator output voltage</p>
 <p>Initializes the RCC Oscillators according to the specified parameters in the RCC_OscInitTypeDef structure.</p>
 <p>Initializes the CPU, AHB and APB buses clocks</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="afdbf7bc80a3841f36f662b8b92982da3" name="afdbf7bc80a3841f36f662b8b92982da3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdbf7bc80a3841f36f662b8b92982da3">&#9670;&#160;</a></span>alpha</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float alpha[3]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tableau des valeurs de alpha. </p>
+<p>Ce tableau contient les valeurs de alpha aux instants t, t-1 et t-2, stockées dans un tableau de trois éléments. </p>
+
+</div>
+</div>
+<a id="a0ef77b325a96874e746ae738ca81b19d" name="a0ef77b325a96874e746ae738ca81b19d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ef77b325a96874e746ae738ca81b19d">&#9670;&#160;</a></span>erreur</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float erreur[3]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tableau des erreurs de vitesse. </p>
+<p>Ce tableau contient les erreurs de vitesse aux instants t, t-1 et t-2, stockées dans un tableau de trois éléments. </p>
+
+</div>
+</div>
+<a id="a518bdc6fb465afa7ebeb19f7df67af05" name="a518bdc6fb465afa7ebeb19f7df67af05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a518bdc6fb465afa7ebeb19f7df67af05">&#9670;&#160;</a></span>erreur_I</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float erreur_I[3]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tableau des erreurs de courant. </p>
+<p>Ce tableau contient les erreurs de courant aux instants t, t-1 et t-2, stockées dans un tableau de trois éléments. </p>
+
+</div>
+</div>
+<a id="a057b4b5873a54b6f02751f56b707aa42" name="a057b4b5873a54b6f02751f56b707aa42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a057b4b5873a54b6f02751f56b707aa42">&#9670;&#160;</a></span>Iconsigne</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Iconsigne[3]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tableau des consignes de courant. </p>
+<p>Ce tableau contient les consignes de courant aux instants t, t-1 et t-2, stockées dans un tableau de trois éléments. </p>
+
+</div>
+</div>
+<a id="acc6198761393592a37db8a8be66ca66e" name="acc6198761393592a37db8a8be66ca66e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc6198761393592a37db8a8be66ca66e">&#9670;&#160;</a></span>vitesse</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float vitesse[3]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tableau pour stocker la vitesse du moteur. </p>
+<p>Tableau des valeurs de vitesse.</p>
+<p>Ce tableau contient trois éléments pour stocker les valeurs de vitesse du moteur à difféents instants </p>
 
 </div>
 </div>
