@@ -28,7 +28,7 @@ Lorsque nous réalisons un passage du rapport cyclique de 50% à 70%, nous obser
 
 ## TP 2 et 3
 
-Pour l'aaservissement, nous avons utilisé les valeurs données en TP. Nous avons créé 2 structures PID pour réaliser les calcules.
+Pour l'asservissement, nous avons utilisé les valeurs données en TP. Nous avons créé 2 structures PID pour réaliser les calcules.
 Les calculs sont effectués à chaque appel du callback de l'ADC pour l'asservissement en courant et à chaque appel du callback du tim16 (que nous avons mis à une fréquence de 100 Hz) pour l'asservissement en vitesse.
 
 
